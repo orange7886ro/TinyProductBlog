@@ -1,0 +1,19 @@
+<div class="col-md-4 col-md-offset-4">
+  <h1>修改</h1>
+
+  <hr>
+  <%= simple_form_for @product, :url => tag_product_path do |f| %>
+      <div class="form-group">
+        <%= f.input :title, input_html: { class: "form-control"} %>
+        <!--<%= f.input :image, input_html: { class: "form-control"} %>-->
+        <%= f.input :description, input_html: { class: "form-control"} %>
+        <%= f.file_field :image %>
+        <%= f.association :categorys,
+                          collection: Product.category_list.collect{ |c| [c.name, c.id] },
+                          as: :check_boxes,
+                          checked: @product.categorys.pluck(:id) %>
+      </div>
+      <%= f.submit "Submit", disable_with: 'Submitting...', class: "btn btn-primary"%>
+      <%= link_to("Back", tag_products_path(@tag) , class: "btn btn-primary pull-right")%>
+  <% end %>
+</div>

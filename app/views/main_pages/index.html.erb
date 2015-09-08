@@ -1,0 +1,32 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("goto personal products pages", products_path, class: "btn btn-primary pull-right") %>
+
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>image</td>
+      <td>Product name</td>
+      <td>Do you like it?(VOTE)</td>
+      <td>vote results</td>
+      <td>description</td>
+      <td>Posts</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+        <tr>
+          <td><%= image_tag product.image_url(:product_thumb).to_s %></td>
+          <td><%= link_to(product.title , product_path(product)) %></td>
+          <td><%= link_to("good", vote_up_main_page_path(product), :method => :post) %> OR
+            <%= link_to("bad", vote_down_main_page_path(product), :method => :post) %></td>
+          <td> good:<%= product.votes_for %>,bad: <%= product.votes_against %></td>
+          <td><%= product.description %></td>
+          <td><%= link_to("posts" , product_posts_path(product)) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

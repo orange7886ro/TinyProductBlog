@@ -1,0 +1,36 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New post", new_product_post_path, class: "btn btn-primary pull-right") %>
+    <%= link_to("Back", :back, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>image</td>
+      <td>POST name</td>
+      <td>Do you like it?(VOTE)</td>
+      <td>vote results</td>
+      <td>description</td>
+      <td>comment</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% @posts.each do |post| %>
+        <tr>
+          <td><%= image_tag post.image_url(:post_thumb).to_s %></td>
+          <td><%= link_to(post.title , product_post_path(@product, post)) %></td>
+          <td><%= link_to("good", vote_up_product_post_path(@product, post), :method => :post) %> OR
+            <%= link_to("bad", vote_down_product_post_path(@product, post), :method => :post) %></td>
+          <td> good:<%= post.votes_for %>,bad: <%= post.votes_against %></td>
+          <td><%= post.description %></td>
+          <td><%= link_to("comment" , post_comments_path(post)) %></td>
+          <td>
+            <%= link_to("Edit", edit_product_post_path(@product, post), class: "btn btn-sm btn-default")%>
+            <%= link_to("Delete", product_post_path(@product, post), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

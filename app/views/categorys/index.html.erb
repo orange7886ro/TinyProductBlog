@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New tags", new_tag_path, class: "btn btn-primary pull-right") %>
+    <%= link_to("back to main page", main_pages_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @category.each do |category| %>
+        <tr>
+          <td><%= link_to(category.name , tag_path(category)) %></td>
+          <td>
+            <%= link_to("Edit", edit_tag_path(category), class: "btn btn-sm btn-default")%>
+            <%= link_to("Delete", tag_path(category), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

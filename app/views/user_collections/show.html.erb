@@ -1,0 +1,29 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("Back", collections_path , class: "btn btn-primary pull-right")%>
+  </div>
+  <h2><%= @collection.title%></h2>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>image</td>
+      <td>Product name</td>
+      <td>description</td>
+      <td>Posts</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @collection.products.each do |product| %>
+        <tr>
+          <td><%= image_tag product.image_url(:product_thumb).to_s %></td>
+          <td><%= link_to(product.title , product_path(product)) %></td>
+          <td><%= product.description %></td>
+          <td><%= link_to("posts" , product_posts_path(product)) %></td>
+          <td>
+            <%= link_to("Delete", collection_collection_item_path(@collection, CollectionItem.find_by(collection_id: @collection.id, product_id: product.id)), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

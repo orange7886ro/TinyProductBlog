@@ -1,0 +1,29 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New comment", new_post_comment_path, class: "btn btn-primary pull-right") %>
+    <%= link_to("Back", product_posts_path(:product_id => @post.product_id), class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>comment content</td>
+      <td>Do you like it?(VOTE)</td>
+      <td>vote results</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.content %></td>
+          <td><%= link_to("good", vote_up_post_comment_path(@post, comment), :method => :post) %> OR
+            <%= link_to("bad", vote_down_post_comment_path(@post, comment), :method => :post) %></td>
+          <td> good:<%= comment.votes_for %>,bad: <%= comment.votes_against %></td>
+          <td>
+            <%= link_to("Edit", edit_post_comment_path(@post, comment), class: "btn btn-sm btn-default")%>
+            <%= link_to("Delete", post_comment_path(@post, comment), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

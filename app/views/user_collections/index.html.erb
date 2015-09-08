@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New collections", new_collection_path, class: "btn btn-primary pull-right") %>
+    <%= link_to("back to main page", main_pages_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>title</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @collection.each do |collection| %>
+        <tr>
+          <td><%= link_to(collection.title , collection_path(collection)) %></td>
+          <td>
+            <%= link_to("Edit", edit_collection_path(collection), class: "btn btn-sm btn-default")%>
+            <%= link_to("Delete", collection_path(collection), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

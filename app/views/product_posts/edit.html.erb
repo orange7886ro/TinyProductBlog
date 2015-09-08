@@ -1,0 +1,14 @@
+<div class="col-md-4 col-md-offset-4">
+  <h1>修改</h1>
+
+  <hr>
+  <%= simple_form_for @post, :url => product_post_path  do |f| %>
+      <div class="form-group">
+        <%= f.input :title, input_html: { class: "form-control"} %>
+        <%= f.file_field :image %>
+        <%= f.input :description, input_html: { class: "form-control"} %>
+      </div>
+      <%= f.submit "Submit", disable_with: 'Submitting...', class: "btn btn-primary"%>
+      <%= link_to("Back", product_posts_path , class: "btn btn-primary pull-right")%>
+  <% end %>
+</div>

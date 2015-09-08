@@ -1,0 +1,34 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New tagging", new_tag_tagging_path(@tag), class: "btn btn-primary pull-right") %>
+    <%= link_to("back to main page", main_pages_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>image</td>
+      <td>Product name</td>
+      <td>Do you like it?(VOTE)</td>
+      <td>vote results</td>
+      <td>description</td>
+      <td>Posts</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @product.each do |product| %>
+        <tr>
+          <td><%= image_tag product.image_url(:product_thumb).to_s %></td>
+          <td><%= link_to(product.title , tag_product_path(@tag, product)) %></td>
+          <td><%= link_to("good", vote_up_tag_product_path(@tag, product), :method => :post) %> OR
+            <%= link_to("bad", vote_down_tag_product_path(@tag, product), :method => :post) %></td>
+          <td> good:<%= product.votes_for %>,bad: <%= product.votes_against %></td>
+          <td><%= product.description %></td>
+          <td><%= link_to("posts" , product_posts_path(product)) %></td>
+          <td>
+            <%= link_to("Delete the tag from product", tag_tagging_path(@tag, @tagging), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
