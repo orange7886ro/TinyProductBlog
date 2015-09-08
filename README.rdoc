@@ -1,11 +1,13 @@
 # TinyBlog
-it's a project for practice
+
+It's a project for practice
+
 User can post products to their own account, and products can be vote or add new comment by other users.
+
 Furthermore user can edit their collection by add favorited products to it.
 
 As admin user, they can edit categories and its contents
 
-## State of the project
+State of the project: 0.0.1
 
-### 0.0.1
 
