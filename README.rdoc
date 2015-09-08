@@ -1,28 +1,11 @@
-== README
+# TinyBlog
+it's a project for practice
+User can post products to their own account, and products can be vote or add new comment by other users.
+Furthermore user can edit their collection by add favorited products to it.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+As admin user, they can edit categories and its contents
 
-Things you may want to cover:
+## State of the project
 
-* Ruby version
+### 0.0.1
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
